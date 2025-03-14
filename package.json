@@ -1,0 +1,25 @@
+{
+  "name": "data-center-project",
+  "version": "1.0.0",
+  "description": "Yashavantrao Chavan Institute of Science",
+  "homepage": "https://github.com/Saurabh1128/Data-Center#readme",
+  "bugs": {
+    "url": "https://github.com/Saurabh1128/Data-Center/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saurabh1128/Data-Center.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
