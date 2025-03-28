@@ -4,21 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <header>
-        <h1>Error</h1>
-    </header>
-    <main>
-        <div class="container">
-            <h2>Something went wrong!</h2>
-            <p><%= message %></p>
-            <p>Please try again or go back to the <a href="/">homepage</a>.</p>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Data Center. All rights reserved.</p>
-    </footer>
+<body class="bg-[#0A0A0A] min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Elements -->
+    <div class="fixed inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-violet-600/30 via-transparent to-cyan-600/30 opacity-60"></div>
+        <div class="absolute inset-0 backdrop-blur-[70px]"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-2xl max-w-md w-full mx-4">
+        <h1 class="text-3xl font-bold mb-4">
+            <span class="bg-gradient-to-r from-violet-300 via-cyan-300 to-violet-300 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
+                <%= title %>
+            </span>
+        </h1>
+        <p class="text-white/60 mb-8"><%= message %></p>
+        <a href="/" class="group relative inline-block px-6 py-3">
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
+            <div class="relative flex items-center justify-center gap-2">
+                <span class="text-white font-medium">Return to Home</span>
+                <svg class="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </div>
+        </a>
+    </div>
 </body>
 </html> 
