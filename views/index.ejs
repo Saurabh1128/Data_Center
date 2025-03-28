@@ -16,6 +16,10 @@
                         'float': 'float 12s ease-in-out infinite',
                         'gradient': 'gradient 8s linear infinite',
                         'reveal': 'reveal 1.5s cubic-bezier(0.2, 1, 0.3, 1)',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 3s linear infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
                     },
                     keyframes: {
                         morph: {
@@ -33,6 +37,18 @@
                         reveal: {
                             '0%': { transform: 'translateY(20px)', opacity: 0 },
                             '100%': { transform: 'translateY(0)', opacity: 1 }
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' }
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
+                            '50%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 }
                         }
                     }
                 }
@@ -40,22 +56,22 @@
         }
     </script>
 </head>
-<body class="bg-[#0A0A0A] overflow-x-hidden">
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 overflow-x-hidden">
 
     <!-- Modern Navbar -->
-    <nav class="sticky top-0 z-50 bg-black/10 backdrop-blur-lg border-b border-white/10">
+    <nav class="sticky top-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-2">
-                    <a href="/" class="text-white font-bold text-lg sm:text-xl">YCIS | DATA CENTER</a>
+                    <a href="/" class="text-white font-bold text-lg sm:text-xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-shine">YCIS | DATA CENTER</a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <a href="/" class="text-white/60 hover:text-white transition-colors">Home</a>
-                        <a href="/security" class="text-white/60 hover:text-white transition-colors">Security</a>
+                        <a href="/" class="text-white/60 hover:text-white transition-colors hover:scale-105 transform duration-300">Home</a>
+                        <a href="/security" class="text-white/60 hover:text-white transition-colors hover:scale-105 transform duration-300">Security</a>
                     </div>
                 </div>
 
@@ -73,15 +89,15 @@
                     <% if (locals.isAuthenticated) { %>
                         <div class="flex items-center space-x-2">
                             <% if (locals.user && locals.user.picture) { %>
-                                <img src="<%= locals.user.picture %>" alt="Profile" class="w-8 h-8 rounded-full">
+                                <img src="<%= locals.user.picture %>" alt="Profile" class="w-8 h-8 rounded-full border-2 border-purple-500">
                             <% } else { %>
-                                <div class="w-8 h-8 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold">
+                                <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
                                     <%= locals.user ? locals.user.name.charAt(0) : 'U' %>
                                 </div>
                             <% } %>
                             <span class="text-white">Welcome, <%= locals.user ? locals.user.name : 'User' %></span>
-                            <a href="/user/dashboard" class="text-sm bg-gradient-to-r from-violet-600 to-cyan-600 py-1 px-3 rounded text-white">Dashboard</a>
-                            <a href="/auth/logout" class="text-sm bg-red-600 py-1 px-3 rounded text-white">Logout</a>
+                            <a href="/user/dashboard" class="text-sm bg-gradient-to-r from-purple-600 to-pink-600 py-1 px-3 rounded text-white hover:opacity-90 transition-opacity">Dashboard</a>
+                            <a href="/auth/logout" class="text-sm bg-red-600 py-1 px-3 rounded text-white hover:opacity-90 transition-opacity">Logout</a>
                         </div>
                     <% } else { %>
                         <!-- Login/Register buttons removed -->
@@ -92,8 +108,8 @@
             <!-- Mobile Menu -->
             <div class="hidden md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="/" class="block px-3 py-2 text-white/60 hover:text-white transition-colors">Home</a>
-                    <a href="/security" class="block px-3 py-2 text-white/60 hover:text-white transition-colors">Security</a>
+                    <a href="/" class="block px-3 py-2 text-white/60 hover:text-white transition-colors hover:bg-white/5 rounded-lg">Home</a>
+                    <a href="/security" class="block px-3 py-2 text-white/60 hover:text-white transition-colors hover:bg-white/5 rounded-lg">Security</a>
                 </div>
             </div>
         </div>
@@ -103,8 +119,11 @@
     <section class="relative min-h-[calc(100vh-4rem)] flex items-center py-12 sm:py-24 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-violet-600/30 via-transparent to-cyan-600/30 opacity-60"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-600/30 via-transparent to-pink-600/30 opacity-60"></div>
             <div class="absolute inset-0 backdrop-blur-[70px]"></div>
+            <!-- Animated Background Shapes -->
+            <div class="absolute top-1/4 -left-20 w-[30rem] h-[30rem] bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute bottom-1/4 -right-20 w-[30rem] h-[30rem] bg-gradient-to-br from-pink-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow [animation-delay:2s]"></div>
         </div>
 
         <!-- Content Container -->
@@ -114,14 +133,14 @@
                 <div class="space-y-8 text-center lg:text-left">
                     <!-- Welcome Badge -->
                     <div class="inline-block animate-reveal">
-                        <div class="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+                        <div class="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 transition-colors">
                             <span class="text-sm font-medium text-white/80">Welcome to YCIS Data Center</span>
                         </div>
                     </div>
 
                     <!-- Main Title -->
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight animate-reveal [animation-delay:0.2s]">
-                        <span class="bg-gradient-to-r from-violet-300 via-cyan-300 to-violet-300 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
+                        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
                             Next-Gen Data Center Solutions
                         </span>
                     </h1>
@@ -134,8 +153,8 @@
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 animate-reveal [animation-delay:0.6s]">
                         <button class="group relative px-6 py-3 w-full sm:w-auto">
-                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg"></div>
-                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
                             <div class="relative flex items-center justify-center gap-2">
                                 <span class="text-white font-medium">Get Started</span>
                                 <svg class="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,8 +163,8 @@
                             </div>
                         </button>
                         <button onclick="window.location.href='/security'" class="group relative px-6 py-3 w-full sm:w-auto">
-                            <div class="absolute inset-0 bg-gradient-to-r from-cyan-600 to-violet-600 rounded-lg"></div>
-                            <div class="absolute inset-0 bg-gradient-to-r from-cyan-600 to-violet-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
                             <div class="relative flex items-center justify-center gap-2">
                                 <span class="text-white font-medium">View Security Features</span>
                                 <svg class="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,9 +180,9 @@
                     <div class="relative w-full max-w-lg mx-auto">
                         <!-- Animated Shape -->
                         <div class="relative w-full aspect-square">
-                            <div class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-cyan-500/20 rounded-full animate-morph"></div>
-                            <div class="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 rounded-full animate-morph [animation-delay:2s]"></div>
-                            <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-cyan-500/5 rounded-full animate-morph [animation-delay:4s]"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full animate-morph"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full animate-morph [animation-delay:2s]"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-full animate-morph [animation-delay:4s]"></div>
                             
                             <!-- Glass Layer -->
                             <div class="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-full border border-white/10"></div>
@@ -174,7 +193,7 @@
                             <!-- Content -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center space-y-4">
-                                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-violet-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center">
+                                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center animate-glow">
                                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                         </svg>
