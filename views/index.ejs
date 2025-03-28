@@ -70,8 +70,7 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <a href="/" class="text-white/60 hover:text-white transition-colors hover:scale-105 transform duration-300">Home</a>
-                        <a href="/security" class="text-white/60 hover:text-white transition-colors hover:scale-105 transform duration-300">Security</a>
+                        <!-- Navigation links removed -->
                     </div>
                 </div>
 
@@ -108,8 +107,7 @@
             <!-- Mobile Menu -->
             <div class="hidden md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="/" class="block px-3 py-2 text-white/60 hover:text-white transition-colors hover:bg-white/5 rounded-lg">Home</a>
-                    <a href="/security" class="block px-3 py-2 text-white/60 hover:text-white transition-colors hover:bg-white/5 rounded-lg">Security</a>
+                    <!-- Navigation links removed -->
                 </div>
             </div>
         </div>
@@ -117,41 +115,51 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-[calc(100vh-4rem)] flex items-center py-12 sm:py-24 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-600/30 via-transparent to-pink-600/30 opacity-60"></div>
-            <div class="absolute inset-0 backdrop-blur-[70px]"></div>
-            <!-- Animated Background Shapes -->
-            <div class="absolute top-1/4 -left-20 w-[30rem] h-[30rem] bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
-            <div class="absolute bottom-1/4 -right-20 w-[30rem] h-[30rem] bg-gradient-to-br from-pink-600/20 to-transparent rounded-full blur-3xl animate-pulse-slow [animation-delay:2s]"></div>
+        <!-- Video Background -->
+        <div class="absolute inset-0 w-full h-full">
+            <video 
+                class="w-full h-full object-cover"
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                poster="/images/Server.png"
+            >
+                <source src="/videos/datacenter.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80"></div>
+            <!-- Blur Effect -->
+            <div class="absolute inset-0 backdrop-blur-[2px]"></div>
         </div>
 
         <!-- Content Container -->
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <!-- Left Column - Content -->
-                <div class="space-y-8 text-center lg:text-left">
+            <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 items-center">
+                <!-- Content -->
+                <div class="space-y-8 text-center">
                     <!-- Welcome Badge -->
-                    <div class="inline-block animate-reveal">
+                    <div class="inline-block">
                         <div class="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 transition-colors">
                             <span class="text-sm font-medium text-white/80">Welcome to YCIS Data Center</span>
                         </div>
                     </div>
 
                     <!-- Main Title -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight animate-reveal [animation-delay:0.2s]">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                         <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
                             Next-Gen Data Center Solutions
                         </span>
                     </h1>
 
                     <!-- Description -->
-                    <p class="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto lg:mx-0 animate-reveal [animation-delay:0.4s]">
+                    <p class="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto">
                         Empowering businesses with cutting-edge infrastructure, advanced security, and seamless scalability for the digital age.
                     </p>
 
                     <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 animate-reveal [animation-delay:0.6s]">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                         <button class="group relative px-6 py-3 w-full sm:w-auto">
                             <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg"></div>
                             <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
@@ -172,37 +180,6 @@
                                 </svg>
                             </div>
                         </button>
-                    </div>
-                </div>
-
-                <!-- Right Column - Visual Element -->
-                <div class="relative animate-reveal [animation-delay:0.4s]">
-                    <div class="relative w-full max-w-lg mx-auto">
-                        <!-- Animated Shape -->
-                        <div class="relative w-full aspect-square">
-                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full animate-morph"></div>
-                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full animate-morph [animation-delay:2s]"></div>
-                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-full animate-morph [animation-delay:4s]"></div>
-                            
-                            <!-- Glass Layer -->
-                            <div class="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-full border border-white/10"></div>
-                            
-                            <!-- Grid Pattern -->
-                            <div class="absolute inset-0 rounded-full" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 20px 20px;"></div>
-                            
-                            <!-- Content -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center space-y-4">
-                                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center animate-glow">
-                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="text-white font-semibold">High Performance</h3>
-                                    <p class="text-white/60 text-sm">Optimized for speed and reliability</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
