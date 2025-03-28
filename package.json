@@ -1,26 +1,22 @@
 {
-  "name": "ycis-data-center",
+  "name": "data-center",
   "version": "1.0.0",
-  "description": "YCIS Data Center Web Application",
+  "description": "YCIS Data Center Website",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.4.7",
-    "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "passport": "^0.6.0",
-    "passport-google-oauth20": "^2.0.0",
-    "uuid": "^9.0.1"
+    "ejs": "^3.1.9"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.17"
   },
   "engines": {
     "node": ">=14.0.0"
