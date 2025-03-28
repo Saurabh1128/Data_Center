@@ -74,15 +74,6 @@
                     </div>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button type="button" class="text-white hover:text-white/70 transition-colors" id="mobile-menu-button">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-
                 <!-- User Status -->
                 <div class="user-status">
                     <% if (locals.isAuthenticated) { %>
@@ -101,13 +92,6 @@
                     <% } else { %>
                         <!-- Login/Register buttons removed -->
                     <% } %>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div class="hidden md:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <!-- Navigation links removed -->
                 </div>
             </div>
         </div>
