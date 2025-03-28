@@ -1,6 +1,10 @@
 const express = require("express");
 const path = require("path");
+const { inject } = require('@vercel/analytics');
 const app = express();
+
+// Initialize Vercel Analytics
+inject();
 
 // Middleware
 app.use(express.json());
