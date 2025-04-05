@@ -3,314 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Features - YCIS Data Center</title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'morph': 'morph 8s ease-in-out infinite',
-                        'float': 'float 12s ease-in-out infinite',
-                        'gradient': 'gradient 8s linear infinite',
-                        'reveal': 'reveal 1.5s cubic-bezier(0.2, 1, 0.3, 1)',
-                    },
-                    keyframes: {
-                        morph: {
-                            '0%, 100%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' },
-                            '50%': { borderRadius: '30% 60% 70% 40%/50% 60% 30% 60%' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0) scale(1)' },
-                            '50%': { transform: 'translateY(-20px) scale(1.05)' }
-                        },
-                        gradient: {
-                            '0%': { backgroundPosition: '0% 50%' },
-                            '100%': { backgroundPosition: '100% 50%' }
-                        },
-                        reveal: {
-                            '0%': { transform: 'translateY(20px)', opacity: 0 },
-                            '100%': { transform: 'translateY(0)', opacity: 1 }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="bg-[#0A0A0A] overflow-x-hidden">
-    <!-- Modern Navbar -->
-    <nav class="sticky top-0 z-50 bg-black/10 backdrop-blur-lg border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <a href="/" class="text-white font-bold text-xl">YCIS | DATA CENTER</a>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="/" class="text-white/60 hover:text-white transition-colors">Home</a>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button type="button" class="text-white hover:text-white/70 transition-colors" id="mobile-menu-button">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div class="hidden md:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="/" class="block px-3 py-2 text-white/60 hover:text-white transition-colors">Home</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900/90 to-gray-900">
+    <%- include('partials/navbar') %>
 
     <!-- Hero Section -->
-    <section class="relative py-24 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-violet-600/30 via-transparent to-cyan-600/30 opacity-60"></div>
-            <div class="absolute inset-0 backdrop-blur-[70px]"></div>
-        </div>
-
-        <!-- Content Container -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-6">
-                <h1 class="text-4xl sm:text-5xl font-bold">
-                    <span class="bg-gradient-to-r from-violet-300 via-cyan-300 to-violet-300 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
+    <section class="relative py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-white mb-4">
+                    <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent">
                         Security Features
                     </span>
                 </h1>
-                <p class="text-xl text-white/60 max-w-3xl mx-auto">
-                    Comprehensive security solutions to protect your data and infrastructure
-                </p>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto">Advanced security solutions to protect your data and infrastructure.</p>
             </div>
         </div>
     </section>
 
-    <!-- Security Features Grid -->
+    <!-- Security Features Section -->
     <section class="relative py-16">
-        <!-- Background Elements -->
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-transparent to-cyan-600/10 opacity-50"></div>
-        </div>
-
-        <!-- Content Container -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- SSL/TLS Encryption -->
-                <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    <div class="relative p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600/20 to-cyan-600/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">SSL/TLS Encryption</h3>
-                        <p class="text-white/60">
-                            Enterprise-grade SSL/TLS encryption ensures secure data transmission between clients and servers, protecting sensitive information from interception.
-                        </p>
-                    </div>
-                </div>
-
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- DDoS Protection -->
                 <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    <div class="relative p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600/20 to-cyan-600/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">DDoS Protection</h3>
-                        <p class="text-white/60">
-                            Advanced DDoS protection systems detect and mitigate distributed denial of service attacks, ensuring uninterrupted service availability.
-                        </p>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                    <div class="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-2xl hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-semibold text-white mb-4">DDoS Protection</h3>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Advanced DDoS Mitigation
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Traffic Analysis
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Real-time Monitoring
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Firewall Security -->
                 <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    <div class="relative p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600/20 to-cyan-600/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                            </svg>
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-2xl hover:scale-105 transition-transform duration-300">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-1 rounded-full text-sm">Featured</span>
                         </div>
-                        <h3 class="text-xl font-semibold text-white">Firewall Security</h3>
-                        <p class="text-white/60">
-                            Next-generation firewall systems provide comprehensive network security, protecting against unauthorized access and malicious traffic.
-                        </p>
+                        <h3 class="text-xl font-semibold text-white mb-4">Firewall Security</h3>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Next-Gen Firewall
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Intrusion Prevention
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Threat Intelligence
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                24/7 Monitoring
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Data Encryption -->
+                <!-- Data Protection -->
                 <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    <div class="relative p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600/20 to-cyan-600/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">Data Encryption</h3>
-                        <p class="text-white/60">
-                            End-to-end encryption for data at rest and in transit, ensuring your information remains secure and private.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Access Control -->
-                <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    <div class="relative p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600/20 to-cyan-600/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">Access Control</h3>
-                        <p class="text-white/60">
-                            Multi-factor authentication and role-based access control systems to manage and restrict system access.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Regular Security Audits -->
-                <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    <div class="relative p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600/20 to-cyan-600/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">Regular Security Audits</h3>
-                        <p class="text-white/60">
-                            Comprehensive security audits and vulnerability assessments to identify and address potential security risks.
-                        </p>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                    <div class="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-2xl hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-semibold text-white mb-4">Data Protection</h3>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                SSL/TLS Encryption
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Regular Backups
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Data Encryption
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Access Control
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="relative mt-20">
-        <!-- Background Effects -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] to-black/90 backdrop-blur-lg"></div>
-        
-        <!-- Gradient Accents -->
-        <div class="absolute inset-0">
-            <div class="absolute bottom-0 left-0 w-[30rem] h-[20rem] bg-gradient-to-tr from-violet-600/20 to-transparent rounded-full blur-3xl"></div>
-            <div class="absolute top-0 right-0 w-[30rem] h-[20rem] bg-gradient-to-bl from-cyan-600/20 to-transparent rounded-full blur-3xl"></div>
-        </div>
-        
-        <!-- Content -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- Brand Section -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"></div>
-                        <h3 class="text-white font-bold text-lg">YCIS Data Center</h3>
-                    </div>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Empowering digital infrastructure with cutting-edge data center solutions for the next generation of technology.
-                    </p>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="text-white/60 hover:text-white transition-colors flex items-center gap-2 group">
-                            <span class="w-1 h-1 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                            <span>Home</span>
-                        </a></li>
-                    </ul>
-                </div>
-
-                <!-- Resources -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-white/60 hover:text-white transition-colors flex items-center gap-2 group">
-                            <span class="w-1 h-1 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                            <span>Documentation</span>
-                        </a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg">Contact</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10 shrink-0">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
-                            </div>
-                            <div class="text-white/60">
-                                <p class="leading-relaxed">Yashavantrao Chavan Institute of Science</p>
-                                <p>Satara, Maharashtra</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                            </div>
-                            <a href="datacenter@ycis.ac.in" class="text-white/60 hover:text-white transition-colors">datacenter@ycis.ac.in</a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                            </div>
-                            <a href="tel:+911234567890" class="text-white/60 hover:text-white transition-colors">+91 8668428513</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="pt-8 border-t border-white/10">
-                <div class="flex justify-center items-center">
-                    <p class="text-white/60 text-sm text-center">
-                        © 2025 YCIS Data Center. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+    <%- include('partials/footer') %>
 </body>
-</html> 
+</html>

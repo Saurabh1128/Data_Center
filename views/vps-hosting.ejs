@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-900/90 to-slate-900">
+    <!-- Include Navbar -->
+    <%- include('partials/navbar') %>
+
+    <!-- Hero Section -->
+    <section class="relative py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-white mb-4">VPS Hosting Solutions</h1>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto">High-performance virtual private servers with full root access and guaranteed resources.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="relative py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic VPS -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                    <div class="relative bg-white/10 backdrop-blur-xl border border-white/10 p-8 rounded-2xl">
+                        <h3 class="text-xl font-semibold text-white mb-4">Basic VPS</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-white">₹999</span>
+                            <span class="text-white/60">/month</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                2 vCPU Cores
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                2GB RAM
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                50GB SSD Storage
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                2TB Bandwidth
+                            </li>
+                        </ul>
+                        <!-- Single Get Started Button -->
+                        <a href="/checkout/vps_basic" class="block w-full py-3 px-12 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-medium hover:opacity-90 transition-opacity text-center mx-auto">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Professional VPS -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="relative bg-white/10 backdrop-blur-xl border border-white/10 p-8 rounded-2xl scale-105">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-gradient-to-r from-violet-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm">Popular</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Professional VPS</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-white">₹1999</span>
+                            <span class="text-white/60">/month</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                4 vCPU Cores
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                8GB RAM
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                100GB SSD Storage
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                5TB Bandwidth
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                DDoS Protection
+                            </li>
+                        </ul>
+                        <a href="/checkout/vps_professional" class="block w-full py-3 px-6 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity text-center">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enterprise VPS -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                    <div class="relative bg-white/10 backdrop-blur-xl border border-white/10 p-8 rounded-2xl">
+                        <h3 class="text-xl font-semibold text-white mb-4">Enterprise VPS</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-white">₹3999</span>
+                            <span class="text-white/60">/month</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                8 vCPU Cores
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                16GB RAM
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                200GB SSD Storage
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                10TB Bandwidth
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                DDoS Protection
+                            </li>
+                            <li class="flex items-center text-white/70">
+                                <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                24/7 Priority Support
+                            </li>
+                        </ul>
+                        <a href="/checkout/vps_enterprise" class="block w-full py-3 px-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:opacity-90 transition-opacity text-center mx-auto">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <%- include('partials/footer') %>
+</body>
+</html>

@@ -7,91 +7,56 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'morph': 'morph 8s ease-in-out infinite',
-                        'float': 'float 12s ease-in-out infinite',
-                        'gradient': 'gradient 8s linear infinite',
-                        'reveal': 'reveal 1.5s cubic-bezier(0.2, 1, 0.3, 1)',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shine': 'shine 3s linear infinite',
-                        'glow': 'glow 2s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        morph: {
-                            '0%, 100%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' },
-                            '50%': { borderRadius: '30% 60% 70% 40%/50% 60% 30% 60%' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0) scale(1)' },
-                            '50%': { transform: 'translateY(-20px) scale(1.05)' }
-                        },
-                        gradient: {
-                            '0%': { backgroundPosition: '0% 50%' },
-                            '100%': { backgroundPosition: '100% 50%' }
-                        },
-                        reveal: {
-                            '0%': { transform: 'translateY(20px)', opacity: 0 },
-                            '100%': { transform: 'translateY(0)', opacity: 1 }
-                        },
-                        shine: {
-                            '0%': { backgroundPosition: '200% center' },
-                            '100%': { backgroundPosition: '-200% center' }
-                        },
-                        glow: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
-                            '50%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8)' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: 0 },
-                            '100%': { transform: 'translateY(0)', opacity: 1 }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Add AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 overflow-x-hidden">
-
+<body class="bg-gradient-to-br from-slate-900 via-indigo-900/90 to-slate-900 overflow-x-hidden">
     <!-- Modern Navbar -->
-    <nav class="sticky top-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
+    <nav class="sticky top-0 z-50 bg-slate-900/50 backdrop-blur-xl border-b border-indigo-500/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-2">
-                    <a href="/" class="text-white font-bold text-lg sm:text-xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-shine">YCIS | DATA CENTER</a>
+                    <a href="/" class="text-white font-bold text-lg sm:text-xl bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent animate-shine">YCIS | DATA CENTER</a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <!-- Navigation links removed -->
+                        <a href="/" class="text-white/70 hover:text-white transition-colors">Home</a>
+                        <a href="/web-hosting" class="text-white/70 hover:text-white transition-colors">Web Hosting</a>
+                        <a href="/vps-hosting" class="text-white/70 hover:text-white transition-colors">VPS Hosting</a>
+
+                        <a href="/contact" class="text-white/70 hover:text-white transition-colors">Contact</a>
                     </div>
                 </div>
 
-                <!-- User Status -->
-                <div class="user-status">
-                    <% if (locals.isAuthenticated) { %>
-                        <div class="flex items-center space-x-2">
-                            <% if (locals.user && locals.user.picture) { %>
-                                <img src="<%= locals.user.picture %>" alt="Profile" class="w-8 h-8 rounded-full border-2 border-purple-500">
-                            <% } else { %>
-                                <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-                                    <%= locals.user ? locals.user.name.charAt(0) : 'U' %>
-                                </div>
-                            <% } %>
-                            <span class="text-white">Welcome, <%= locals.user ? locals.user.name : 'User' %></span>
-                            <a href="/user/dashboard" class="text-sm bg-gradient-to-r from-purple-600 to-pink-600 py-1 px-3 rounded text-white hover:opacity-90 transition-opacity">Dashboard</a>
-                            <a href="/auth/logout" class="text-sm bg-red-600 py-1 px-3 rounded text-white hover:opacity-90 transition-opacity">Logout</a>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-white hover:text-white/70 transition-colors" id="mobile-menu-button">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-800/95 backdrop-blur-xl rounded-lg mt-2">
+                    <a href="/" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Home</a>
+                    <a href="/web-hosting" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Web Hosting</a>
+                    <a href="/vps-hosting" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">VPS Hosting</a>
+                    <div class="px-3 py-2">
+                        <span class="block text-white/70 mb-2">Services</span>
+                        <div class="pl-4 space-y-1">
+                            <a href="/security" class="block px-3 py-2 text-white/60 hover:text-white hover:bg-indigo-500/10 rounded-lg">Security</a>
+                            <a href="/cloud-storage" class="block px-3 py-2 text-white/60 hover:text-white hover:bg-indigo-500/10 rounded-lg">Cloud Storage</a>
+                            <a href="/backup" class="block px-3 py-2 text-white/60 hover:text-white hover:bg-indigo-500/10 rounded-lg">Backup Solutions</a>
                         </div>
-                    <% } else { %>
-                        <!-- Login/Register buttons removed -->
-                    <% } %>
+                    </div>
+                    <a href="/contact" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Contact</a>
                 </div>
             </div>
         </div>
@@ -107,63 +72,87 @@
                 muted 
                 loop 
                 playsinline
+                preload="auto"
                 poster="/images/Server.png"
+                id="bgVideo"
             >
-                <source src="/videos/datacenter.mp4" type="video/mp4">
+                <source src="/videos/datacenter.mp4" type="video/mp4" />
+                <source src="/videos/datacenter.webm" type="video/webm" />
                 Your browser does not support the video tag.
             </video>
-            <!-- Dark Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80"></div>
-            <!-- Blur Effect -->
-            <div class="absolute inset-0 backdrop-blur-[2px]"></div>
+            <!-- Enhanced Overlay with Multiple Layers -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/90 to-black/70 to-purple-900/50"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.7)_100%)]"></div>
+            <div class="absolute inset-0 backdrop-blur-[1px]"></div>
         </div>
 
+        <!-- Add this script at the end of your body tag -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const video = document.getElementById('bgVideo');
+                video.play().catch(function(error) {
+                    console.log("Video autoplay failed:", error);
+                });
+            });
+        </script>
         <!-- Content Container -->
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 items-center">
-                <!-- Content -->
-                <div class="space-y-8 text-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8 animate-reveal [animation-delay:0.2s]">
                     <!-- Welcome Badge -->
-                    <div class="inline-block">
+                    <div class="inline-block animate-float">
                         <div class="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 transition-colors">
                             <span class="text-sm font-medium text-white/80">Welcome to YCIS Data Center</span>
                         </div>
                     </div>
 
-                    <!-- Main Title -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
-                            Next-Gen Data Center Solutions
+                    <!-- Main Title with Enhanced Animation -->
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-white">
+                        <span class="block mb-2 animate-slide-up [animation-delay:0.3s]">Next-Gen</span>
+                        <span class="block animate-slide-up [animation-delay:0.4s]">
+                            Data Center
                         </span>
+                        <span class="block animate-slide-up [animation-delay:0.5s]">Solutions</span>
                     </h1>
 
-                    <!-- Description -->
-                    <p class="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto">
+                    <!-- Enhanced Description -->
+                    <p class="text-xl sm:text-2xl text-white/70 max-w-2xl animate-reveal [animation-delay:0.6s]">
                         Empowering businesses with cutting-edge infrastructure, advanced security, and seamless scalability for the digital age.
                     </p>
 
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                        <button class="group relative px-6 py-3 w-full sm:w-auto">
-                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg"></div>
-                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
-                            <div class="relative flex items-center justify-center gap-2">
-                                <span class="text-white font-medium">Get Started</span>
-                                <svg class="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Enhanced CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-6 animate-reveal [animation-delay:0.7s]">
+                        <button onclick="scrollToServices()" class="group relative px-8 py-4 w-full sm:w-auto overflow-hidden rounded-lg">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 animate-pulse-slow"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500"></div>
+                            <div class="relative flex items-center justify-center gap-3">
+                                <span class="text-white font-medium text-lg">Data Center Services</span>
+                                <svg class="w-6 h-6 text-white transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                                 </svg>
                             </div>
                         </button>
-                        <button onclick="window.location.href='/security'" class="group relative px-6 py-3 w-full sm:w-auto">
-                            <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg"></div>
-                            <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
-                            <div class="relative flex items-center justify-center gap-2">
-                                <span class="text-white font-medium">View Security Features</span>
-                                <svg class="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        
+                        <button onclick="window.location.href='/security'" class="group relative px-8 py-4 w-full sm:w-auto overflow-hidden rounded-lg">
+                            <div class="absolute inset-0 bg-white/10 backdrop-blur-sm border border-white/20 group-hover:border-purple-500/50 transition-colors duration-300"></div>
+                            <div class="relative flex items-center justify-center gap-3">
+                                <span class="text-white font-medium text-lg">Explore Features</span>
+                                <svg class="w-6 h-6 text-white transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                                 </svg>
                             </div>
                         </button>
+                    </div>
+                </div>
+
+                <!-- Right Content - Decorative Elements -->
+                <div class="hidden lg:block relative animate-reveal [animation-delay:0.8s]">
+                    <div class="relative w-full h-[500px]">
+                        <!-- Floating Elements -->
+                        <div class="absolute top-1/4 right-1/4 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl animate-float"></div>
+                        <div class="absolute bottom-1/4 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-float [animation-delay:2s]"></div>
+                        <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-violet-500/20 rounded-full blur-3xl animate-float [animation-delay:4s]"></div>
                     </div>
                 </div>
             </div>
@@ -312,32 +301,6 @@
                         <p class="text-lg leading-relaxed">
                             Data Center Services provide infrastructure, management, and security solutions for storing, processing, and managing large volumes of data. These services ensure high availability, scalability, and security for businesses, supporting cloud computing, networking, and enterprise applications.
                         </p>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-r from-cyan-600/20 to-violet-600/20 border border-white/10">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
-                                </div>
-                                <span>Secure Data Storage and Backups</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-r from-cyan-600/20 to-violet-600/20 border border-white/10">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                    </svg>
-                                </div>
-                                <span>Website & Application Hosting</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-r from-cyan-600/20 to-violet-600/20 border border-white/10">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                    </svg>
-                                </div>
-                                <span>High-Performance Computing (HPC)</span>
-                            </li>
-                        </ul>
                     </div>
 
                     <!-- CTA Button -->
@@ -386,322 +349,20 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing-section" class="relative py-24 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0">
-            <!-- Gradient Background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-transparent to-cyan-600/10 opacity-50"></div>
-            
-            <!-- Decorative Blobs -->
-            <div class="absolute top-1/4 -left-20 w-[30rem] h-[30rem] bg-gradient-to-br from-violet-600/20 to-transparent rounded-full blur-3xl"></div>
-            <div class="absolute bottom-1/4 -right-20 w-[30rem] h-[30rem] bg-gradient-to-br from-cyan-600/20 to-transparent rounded-full blur-3xl"></div>
-        </div>
-
-        <!-- Content Container -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-3xl sm:text-4xl font-bold">
-                    <span class="bg-gradient-to-r from-violet-300 via-cyan-300 to-violet-300 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
-                        Flexible Pricing Plans
-                    </span>
-                </h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full mx-auto"></div>
-                <p class="text-white/60 text-lg">
-                    Choose the perfect plan for your infrastructure needs
-                </p>
-            </div>
-
-            <!-- Pricing Cards Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Basic Plan -->
-                <div class="relative group">
-                    <!-- Card Background -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/20"></div>
-                    
-                    <!-- Card Content -->
-                    <div class="relative p-8 space-y-6">
-                        <!-- Plan Header -->
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-semibold text-white">Basic Infrastructure</h3>
-                            <div class="flex items-end gap-2">
-                                <span class="text-4xl font-bold text-white">399</span>
-                                <span class="text-white/60 mb-1">/month</span>
-                            </div>
-                            <div class="h-px bg-gradient-to-r from-violet-500/20 to-cyan-500/20"></div>
-                        </div>
-
-                        <!-- Features List -->
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">2 CPU Cores</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">4GB RAM</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">10GB Storage</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">24/7 Priority Support</span>
-                            </li>
-                        </ul>
-
-                        <!-- CTA Button -->
-                        <button class="w-full group relative px-6 py-3">
-                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                            <span class="relative text-white font-medium">Purchase</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Professional Plan -->
-                <div class="relative group">
-                    <!-- Featured Badge -->
-                    
-
-                    <!-- Card Background -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/15 to-white/10 rounded-2xl border-2 border-violet-500/20 backdrop-blur-sm transition-all duration-300 group-hover:border-violet-500/40"></div>
-                    
-                    <!-- Card Content -->
-                    <div class="relative p-8 space-y-6">
-                        <!-- Plan Header -->
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-semibold text-white">Professional Suite</h3>
-                            <div class="flex items-end gap-2">
-                                <span class="text-4xl font-bold text-white">599</span>
-                                <span class="text-white/60 mb-1">/month</span>
-                            </div>
-                            <div class="h-px bg-gradient-to-r from-violet-500/40 to-cyan-500/40"></div>
-                        </div>
-
-                        <!-- Features List -->
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/30 to-cyan-600/30">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">4 CPU Cores</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/30 to-cyan-600/30">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">8GB RAM</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/30 to-cyan-600/30">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">25GB Storage</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/30 to-cyan-600/30">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">24/7 Priority Support</span>
-                            </li>
-                        </ul>
-
-                        <!-- CTA Button -->
-                        <button class="w-full group relative px-6 py-3">
-                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg"></div>
-                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg blur-lg group-hover:opacity-60 transition-opacity"></div>
-                            <span class="relative text-white font-medium">Purchase</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="relative group">
-                    <!-- Card Background -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-cyan-500/20"></div>
-                    
-                    <!-- Card Content -->
-                    <div class="relative p-8 space-y-6">
-                        <!-- Plan Header -->
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-semibold text-white">Enterprise Solutions</h3>
-                            <div class="flex items-end gap-2">
-                                <span class="text-4xl font-bold text-white">Custom</span>
-                            </div>
-                            <div class="h-px bg-gradient-to-r from-violet-500/20 to-cyan-500/20"></div>
-                        </div>
-
-                        <!-- Features List -->
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">Custom CPU Allocation</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">Flexible RAM Options</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">Unlimited Storage</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-gradient-to-r from-violet-600/20 to-cyan-600/20">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white/60">Dedicated Support Team</span>
-                            </li>
-                        </ul>
-
-                        <!-- CTA Button -->
-                        <button class="w-full group relative px-6 py-3">
-                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-600 rounded-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                            <span class="relative text-white font-medium">Contact Sales</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Info -->
-            <div class="mt-16 text-center">
-                <p class="text-white/60">
-                    All plans include standard features: 99.9% uptime, basic DDoS protection, and automated backups
-                </p>
-            </div>
-        </div>
-    </section>
+  
 
     <!-- Footer -->
-    <footer class="relative mt-20">
-        <!-- Background Effects -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] to-black/90 backdrop-blur-lg"></div>
+    <footer class="relative mt-20 py-6">
+        <!-- Background with improved visibility -->
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/90 to-black backdrop-blur-xl"></div>
         
-        <!-- Gradient Accents -->
-        <div class="absolute inset-0">
-            <div class="absolute bottom-0 left-0 w-[30rem] h-[20rem] bg-gradient-to-tr from-violet-600/20 to-transparent rounded-full blur-3xl"></div>
-            <div class="absolute top-0 right-0 w-[30rem] h-[20rem] bg-gradient-to-bl from-cyan-600/20 to-transparent rounded-full blur-3xl"></div>
-        </div>
-        
-        <!-- Content -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- Brand Section -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"></div>
-                        <h3 class="text-white font-bold text-lg">YCIS Data Center</h3>
-                    </div>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Empowering digital infrastructure with cutting-edge data center solutions for the next generation of technology.
-                    </p>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="text-white/60 hover:text-white transition-colors flex items-center gap-2 group">
-                            <span class="w-1 h-1 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                            <span>Home</span>
-                        </a></li>
-                        
-                    </ul>
-                </div>
-
-                <!-- Resources -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-white/60 hover:text-white transition-colors flex items-center gap-2 group">
-                            <span class="w-1 h-1 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                            <span>Documentation</span>
-                        </a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg">Contact</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10 shrink-0">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
-                            </div>
-                            <div class="text-white/60">
-                                <p class="leading-relaxed">Yashavantrao Chavan Institute of Science</p>
-                                <p>Satara, Maharashtra</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                            </div>
-                            <a href="datacenter@ycis.ac.in" class="text-white/60 hover:text-white transition-colors">datacenter@ycis.ac.in</a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                            </div>
-                            <a href="tel:+911234567890" class="text-white/60 hover:text-white transition-colors">+91 8668428513</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="pt-8 border-t border-white/10">
-                <div class="flex justify-center items-center">
-                    <p class="text-white/60 text-sm text-center">
-                        © 2025 YCIS Data Center. All rights reserved.
-                    </p>
-                </div>
+        <!-- Content Container -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Copyright -->
+            <div class="flex justify-center items-center">
+                <p class="text-white/60 text-sm text-center">
+                    © 2025 YCIS Data Center. All rights reserved.
+                </p>
             </div>
         </div>
     </footer>
@@ -748,5 +409,138 @@
             setInterval(updateDateTime, 1000);
         });
     </script>
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
 </body>
 </html>
+<script>
+    // Smooth scroll function
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+
+<!-- Add this script before the closing body tag -->
+<script>
+    function scrollToServices() {
+        const servicesSection = document.getElementById('services-section');
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+<script>
+    // Initialize AOS with custom settings
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+        delay: 100,
+        easing: 'ease-out-cubic'
+    });
+
+    // Refresh AOS on dynamic content changes
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.refresh();
+    });
+
+    // Add data-aos attributes dynamically
+    document.querySelectorAll('.animate-reveal').forEach((el, index) => {
+        el.setAttribute('data-aos', 'fade-up');
+        el.setAttribute('data-aos-delay', (index * 100).toString());
+    });
+</script>
+</body>
+
+<!-- Add this script before the closing body tag -->
+<script>
+    function scrollToServices() {
+        const servicesSection = document.getElementById('services-section');
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+<style>
+    @keyframes fade-in-down {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-in-up {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-down {
+        animation: fade-in-down 1s ease-out forwards;
+    }
+
+    .animate-fade-in-up {
+        animation: fade-in-up 1s ease-out forwards;
+        animation-delay: 0.3s;
+    }
+
+    /* Custom Animations */
+    @keyframes reveal {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .animate-reveal {
+        opacity: 0;
+        animation: reveal 1s ease forwards;
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-gradient {
+        animation: gradient 3s linear infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes slide-up {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-slide-up {
+        opacity: 0;
+        animation: slide-up 1s ease forwards;
+    }
+</style>

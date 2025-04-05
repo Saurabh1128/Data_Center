@@ -1,0 +1,41 @@
+<nav class="sticky top-0 z-50 bg-slate-900/50 backdrop-blur-xl border-b border-indigo-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center gap-2">
+                <a href="/" class="text-white font-bold text-lg sm:text-xl bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent animate-shine">YCIS | DATA CENTER</a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-center space-x-8">
+                    <a href="/" class="text-white/70 hover:text-white transition-colors">Home</a>
+                    <a href="/web-hosting" class="text-white/70 hover:text-white transition-colors">Web Hosting</a>
+                    <a href="/vps-hosting" class="text-white/70 hover:text-white transition-colors">VPS Hosting</a>
+                    <a href="/security" class="text-white/70 hover:text-white transition-colors">Security</a>
+                    <a href="/contact" class="text-white/70 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button" class="text-white hover:text-white/70 transition-colors" id="mobile-menu-button">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-800/95 backdrop-blur-xl rounded-lg mt-2">
+                <a href="/" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Home</a>
+                <a href="/web-hosting" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Web Hosting</a>
+                <a href="/vps-hosting" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">VPS Hosting</a>
+                <a href="/security" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Security</a>
+                <a href="/contact" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-indigo-500/10 rounded-lg">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>

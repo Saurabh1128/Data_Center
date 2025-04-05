@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-900/90 to-slate-900">
+    <%- include('partials/navbar') %>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Checkout Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-white mb-4">Complete Your Order</h1>
+            <p class="text-lg text-white/70">You're just a few steps away from getting started</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Order Details -->
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+                <h2 class="text-2xl font-bold text-white mb-6">Order Details</h2>
+                <div class="space-y-6">
+                    <!-- Plan Details -->
+                    <div class="flex justify-between items-start border-b border-white/10 pb-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-white"><%= plan.name %></h3>
+                            <p class="text-white/60 mt-1">Storage: <%= plan.storage %></p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-medium text-white">₹<%= plan.price %></div>
+                            <div class="text-sm text-white/60 line-through">₹<%= plan.originalPrice %></div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Cycle -->
+                    <div>
+                        <label class="block text-white mb-2">Billing Cycle</label>
+                        <select class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+                            <option value="12">1 Year - Save 20%</option>
+                            <option value="24">2 Years - Save 30%</option>
+                            <option value="36">3 Years - Save 40%</option>
+                        </select>
+                    </div>
+
+                    <!-- Domain Name -->
+                    <div>
+                        <label class="block text-white mb-2">Domain Name</label>
+                        <input type="text" placeholder="yourdomain.com" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+                        <p class="text-emerald-400 text-sm mt-2">Free domain for the first year!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Details -->
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+                <h2 class="text-2xl font-bold text-white mb-6">Payment Details</h2>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-white mb-2">Card Number</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-white mb-2">Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+                        </div>
+                        <div>
+                            <label class="block text-white mb-2">CVV</label>
+                            <input type="text" placeholder="123" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-white mb-2">Name on Card</label>
+                        <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="border-t border-white/10 pt-6 mt-6">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-white">
+                                <span>Subtotal</span>
+                                <span>₹<%= plan.originalPrice %></span>
+                            </div>
+                            <div class="flex justify-between text-white">
+                                <span>Discount</span>
+                                <span class="text-emerald-400">-₹<%= plan.originalPrice - plan.price %></span>
+                            </div>
+                            <div class="flex justify-between text-white font-bold pt-2 border-t border-white/10">
+                                <span>Total</span>
+                                <span>₹<%= plan.price %></span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full mt-6 py-4 px-6 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium hover:opacity-90 transition-opacity">
+                            Complete Purchase
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-6 flex items-center justify-center text-white/60">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    30-day money-back guarantee
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

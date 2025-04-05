@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Login - YCIS Data Center</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-900/90 to-slate-900">
+    <%- include('partials/navbar') %>
+
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-md w-full space-y-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white">Dashboard Login</h2>
+                <p class="mt-2 text-white/60">Please sign in to access the dashboard</p>
+            </div>
+
+            <form class="mt-8 space-y-6" action="/login" method="POST">
+                <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 space-y-6">
+                    <div>
+                        <label class="block text-white mb-2">Username</label>
+                        <input 
+                            type="text" 
+                            name="username" 
+                            required 
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-white mb-2">Password</label>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            required 
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                        >
+                    </div>
+
+                    <% if (error) { %>
+                        <p class="text-red-500 text-sm"><%= error %></p>
+                    <% } %>
+
+                    <button type="submit" class="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
